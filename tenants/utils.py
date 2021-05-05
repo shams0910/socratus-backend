@@ -1,8 +1,14 @@
 from django.db import connection
+from django.apps import apps
 
 
-def get_apps():
-    return ['accounts', ]
+def get_apps(tenants=False):
+    app_names = []
+    if tenants:
+        app_names = [app.name for app in apps.get_app_configs()]
+    else:
+        app_names = [app.name for app in apps.get_app_configs() if app.name != 'tenants']
+    return app_names
 
 
 def tenant_schema_from_request(request):
