@@ -13,8 +13,9 @@ class Account(AbstractUser):
         (3, "Student")
     )
     username = None
-    passport_number = models.CharField(max_length=10, unique=True, null=True)
+    middle_name = models.CharField(max_length=20)
     phone = models.CharField(max_length=30, unique=True)
+    birth_date = models.DateField()
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
 
     USERNAME_FIELD = 'phone'

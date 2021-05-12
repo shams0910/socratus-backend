@@ -2,9 +2,9 @@ from django.db import connection
 from django.apps import apps
 
 
-def get_apps(tenants=False):
+def get_apps(tenants_app=False):
     app_names = []
-    if tenants:
+    if tenants_app:
         app_names = [app.name for app in apps.get_app_configs()]
     else:
         app_names = [app.name for app in apps.get_app_configs() if app.name != 'tenants']

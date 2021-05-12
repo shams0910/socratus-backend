@@ -9,6 +9,6 @@ from tenants.utils import get_apps
 def run_migrations_for_new_schema(sender, **kwargs):
     instance = kwargs['instance']
     schema = instance.get_schema_name()
-    apps = get_apps
+    apps = get_apps()
     for app in apps:
         call_command('migrate_new_schema', app_label=app, schema=schema)
