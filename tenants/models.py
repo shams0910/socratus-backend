@@ -1,11 +1,16 @@
 from django.db import models
-
+from accounts.models import Account
 # Create your models here.
 
 
 class Region(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=20)
+
+
+class RegionAdminProfile(models.Model):
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
 
 
 class Division(models.Model):
